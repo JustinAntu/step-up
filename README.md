@@ -1,3 +1,23 @@
+## Step Up
+
+Corporate step challenge — web app (Next.js + Supabase). Repo root folder: `step-up` (e.g. `c:\code\step-up`).
+
+1. Copy `.env.example` to `.env.local` and add your [Supabase](https://supabase.com) project URL plus a **public** key (`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` or legacy `NEXT_PUBLIC_SUPABASE_ANON_KEY`).
+2. Apply database migrations:
+   - **Option A:** Add `DATABASE_URL` (Postgres URI from **Supabase → Database → Connection string**) to `.env.local`, then run `npm run db:migrate`.
+   - **Option B:** `npx supabase login`, `npx supabase link --project-ref <your-ref>`, then `npx supabase db push`.
+   - **Option C:** Paste each file from `supabase/migrations/` into the Supabase SQL editor (in name order). The optional seed is `20250430000002_seed_pilot_example.sql`.
+3. In Supabase **Authentication → URL configuration**, add redirect URLs: `http://localhost:3000/auth/callback` (and your production URL when you deploy).
+4. Enable **Email** provider and **Magic link** (or OTP) for sign-in.
+5. Run the dev server (below), open `/login`, and sign in with email.
+6. Assign teams in SQL (until an admin UI exists), for example:  
+   `update public.profiles set team_id = '22222222-2222-2222-2222-222222222221' where id = '<user-uuid>';`  
+   Use team UUIDs from the optional seed migration or your own `teams` rows.
+
+The npm `package.json` name is `step-up`, matching the repo folder name.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -34,3 +54,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Folder name `step-up`
+
+If your directory is still `Step Up`, rename it to **`step-up`** (matches `package.json` and avoids spaces in paths):
+
+1. Close this project in the editor and any terminal whose current directory is inside it.
+2. In PowerShell from `c:\code`:  
+   `Rename-Item -LiteralPath "c:\code\Step Up" -NewName "step-up"`  
+   (or rename in File Explorer.)
+3. Re-open the workspace from `c:\code\step-up`.
