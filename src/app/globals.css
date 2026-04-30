@@ -49,24 +49,24 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: oklch(0.98 0.01 286);
+  --foreground: oklch(0.24 0.04 274);
+  --card: oklch(0.995 0.012 286);
+  --card-foreground: oklch(0.24 0.04 274);
+  --popover: oklch(1 0.01 286);
+  --popover-foreground: oklch(0.24 0.04 274);
+  --primary: oklch(0.58 0.22 312);
+  --primary-foreground: oklch(0.99 0.01 286);
+  --secondary: oklch(0.94 0.03 292);
+  --secondary-foreground: oklch(0.3 0.07 280);
+  --muted: oklch(0.94 0.02 286);
+  --muted-foreground: oklch(0.5 0.05 280);
+  --accent: oklch(0.92 0.05 306);
+  --accent-foreground: oklch(0.3 0.07 280);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.86 0.03 286);
+  --input: oklch(0.9 0.03 286);
+  --ring: oklch(0.63 0.18 312);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -84,24 +84,24 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.17 0.03 286);
+  --foreground: oklch(0.95 0.02 286);
+  --card: oklch(0.22 0.04 286);
+  --card-foreground: oklch(0.95 0.02 286);
+  --popover: oklch(0.2 0.04 286);
+  --popover-foreground: oklch(0.95 0.02 286);
+  --primary: oklch(0.74 0.2 312);
+  --primary-foreground: oklch(0.2 0.04 286);
+  --secondary: oklch(0.31 0.04 292);
+  --secondary-foreground: oklch(0.95 0.02 286);
+  --muted: oklch(0.29 0.03 286);
+  --muted-foreground: oklch(0.77 0.03 286);
+  --accent: oklch(0.33 0.06 300);
+  --accent-foreground: oklch(0.96 0.02 286);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --border: oklch(0.52 0.06 286 / 38%);
+  --input: oklch(0.56 0.05 286 / 45%);
+  --ring: oklch(0.78 0.2 312);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -130,6 +130,21 @@
 }
 
 @layer components {
+  .landing-grid {
+    background-image:
+      linear-gradient(
+        color-mix(in oklab, var(--foreground) 6%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--foreground) 6%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 44px 44px;
+    background-position: center center;
+  }
+
   .landing-shell::before {
     content: "";
     position: absolute;
@@ -137,10 +152,10 @@
     height: 42rem;
     pointer-events: none;
     background:
-      radial-gradient(circle at 20% 35%, color-mix(in oklab, var(--primary) 24%, transparent) 0%, transparent 55%),
-      radial-gradient(circle at 80% 20%, color-mix(in oklab, var(--foreground) 10%, transparent) 0%, transparent 48%),
+      radial-gradient(circle at 20% 35%, color-mix(in oklab, var(--primary) 32%, transparent) 0%, transparent 58%),
+      radial-gradient(circle at 86% 20%, color-mix(in oklab, oklch(0.74 0.22 225) 30%, transparent) 0%, transparent 50%),
       linear-gradient(155deg, transparent 0%, color-mix(in oklab, var(--muted) 45%, transparent) 100%);
-    opacity: 0.95;
+    opacity: 1;
     z-index: 0;
   }
 
@@ -162,9 +177,9 @@
     pointer-events: none;
     background: linear-gradient(
       135deg,
-      color-mix(in oklab, var(--primary) 8%, transparent) 0%,
+      color-mix(in oklab, var(--primary) 20%, transparent) 0%,
       transparent 35%,
-      color-mix(in oklab, var(--muted) 40%, transparent) 100%
+      color-mix(in oklab, oklch(0.72 0.2 225) 25%, transparent) 100%
     );
     z-index: 0;
   }
@@ -173,13 +188,13 @@
     position: absolute;
     inset: -35% -20%;
     pointer-events: none;
-    opacity: 0.28;
+    opacity: 0.38;
     z-index: 0;
     background:
       repeating-linear-gradient(
         -24deg,
-        color-mix(in oklab, var(--foreground) 14%, transparent) 0,
-        color-mix(in oklab, var(--foreground) 14%, transparent) 2px,
+        color-mix(in oklab, var(--primary) 36%, transparent) 0,
+        color-mix(in oklab, var(--primary) 36%, transparent) 2px,
         transparent 2px,
         transparent 17px
       );
@@ -192,8 +207,8 @@
     border-radius: 9999px;
     pointer-events: none;
     z-index: 0;
-    background: color-mix(in oklab, var(--primary) 60%, transparent);
-    opacity: 0.2;
+    background: color-mix(in oklab, var(--primary) 70%, transparent);
+    opacity: 0.25;
     filter: blur(0.5px);
     animation: pulse-drift 10s ease-in-out infinite;
   }
@@ -218,13 +233,107 @@
     transition:
       transform 180ms ease,
       box-shadow 180ms ease,
-      border-color 180ms ease;
+      border-color 180ms ease,
+      background-color 220ms ease;
   }
 
   .card-kick:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px color-mix(in oklab, var(--foreground) 6%, transparent);
-    border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
+    box-shadow:
+      0 12px 35px color-mix(in oklab, var(--foreground) 9%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent) inset;
+    border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
+  }
+
+  .landing-gradient-text {
+    background: linear-gradient(
+      95deg,
+      color-mix(in oklab, var(--primary) 90%, white),
+      oklch(0.72 0.2 225)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .landing-orbit {
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    border: 1px solid color-mix(in oklab, var(--primary) 45%, transparent);
+    opacity: 0.35;
+    z-index: 0;
+    animation: orbit-spin 16s linear infinite;
+  }
+
+  .landing-orbit-a {
+    width: 18rem;
+    height: 18rem;
+    right: -7rem;
+    top: -6rem;
+  }
+
+  .landing-orbit-b {
+    width: 11rem;
+    height: 11rem;
+    right: 1rem;
+    top: 2rem;
+    animation-duration: 12s;
+    animation-direction: reverse;
+  }
+
+  .landing-marquee {
+    overflow: hidden;
+  }
+
+  .landing-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    min-width: max-content;
+    animation: marquee-slide 20s linear infinite;
+  }
+
+  .landing-marquee-track span {
+    position: relative;
+  }
+
+  .landing-marquee-track span::after {
+    content: "";
+    position: absolute;
+    right: -1.35rem;
+    top: 50%;
+    width: 0.25rem;
+    height: 0.25rem;
+    margin-top: -0.125rem;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--primary) 70%, transparent);
+  }
+
+  .media-frame {
+    animation: media-in 620ms ease both;
+  }
+
+  .landing-media {
+    transform: scale(1.01);
+    transition:
+      transform 320ms ease,
+      filter 320ms ease;
+    filter: saturate(1.05) contrast(1.02);
+  }
+
+  .media-frame:hover .landing-media {
+    transform: scale(1.04);
+    filter: saturate(1.14) contrast(1.05);
+  }
+
+  @media (max-width: 767px) {
+    .card-kick:hover {
+      transform: translateY(-1px);
+    }
+    .landing-media {
+      transform: scale(1);
+    }
   }
 
   @keyframes lane-shift {
@@ -247,11 +356,44 @@
       opacity: 0.3;
     }
   }
+
+  @keyframes orbit-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes marquee-slide {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes media-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0) scale(0.995);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .landing-lane,
   .landing-pulse,
+  .landing-orbit,
+  .landing-marquee-track,
+  .media-frame,
+  .landing-media,
   .card-kick {
     animation: none !important;
     transition: none !important;

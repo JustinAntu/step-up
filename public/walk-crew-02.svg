@@ -1,0 +1,22 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="120" y1="50" x2="1030" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#201541"/>
+      <stop offset="1" stop-color="#6237FF"/>
+    </linearGradient>
+    <linearGradient id="lane2" x1="180" y1="430" x2="1030" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00B7FF" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#FF4AE3" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="36" fill="url(#bg2)"/>
+  <path d="M66 760L290 402L422 402L250 760H66Z" fill="url(#lane2)" fill-opacity="0.44"/>
+  <path d="M311 760L520 402L652 402L495 760H311Z" fill="url(#lane2)" fill-opacity="0.6"/>
+  <path d="M556 760L750 402L883 402L739 760H556Z" fill="url(#lane2)" fill-opacity="0.75"/>
+  <path d="M801 760L980 402L1112 402L984 760H801Z" fill="url(#lane2)" fill-opacity="0.5"/>
+  <circle cx="188" cy="190" r="82" fill="#66D0FF" fill-opacity="0.18"/>
+  <circle cx="968" cy="146" r="64" fill="#FF7AE7" fill-opacity="0.2"/>
+  <rect x="485" y="228" width="232" height="122" rx="20" fill="#FFFFFF" fill-opacity="0.12"/>
+  <rect x="515" y="256" width="172" height="14" rx="7" fill="#FFFFFF" fill-opacity="0.65"/>
+  <rect x="515" y="283" width="136" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.43"/>
+</svg>
