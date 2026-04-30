@@ -8,9 +8,13 @@ Corporate step challenge — web app (Next.js + Supabase). Repo root folder: `st
    - **Option B:** `npx supabase login`, `npx supabase link --project-ref <your-ref>`, then `npx supabase db push`.
    - **Option C:** Paste each file from `supabase/migrations/` into the Supabase SQL editor (in name order). The optional seed is `20250430000002_seed_pilot_example.sql`.
 3. In Supabase **Authentication → URL configuration**, add redirect URLs: `http://localhost:3000/auth/callback` (and your production URL when you deploy).
-4. Enable **Email** provider and **Magic link** (or OTP) for sign-in.
-5. Run the dev server (below), open `/login`, and sign in with email.
-6. Assign teams in SQL (until an admin UI exists), for example:  
+4. Enable the **Email** provider in Supabase **Authentication → Providers**:
+   - Set **"Confirm email"** to your preference (off for frictionless dev, on for production).
+   - **Password sign-in is used** — magic link / OTP is not required and can be left disabled.
+5. Run the dev server (below), open `/login`, and sign in (or create an account) with email + password.
+6. **Sign-up flow:** users create an account directly on `/login` via the "Create account" link in the form. If email confirmation is enabled in Supabase they will receive a confirmation email before they can sign in.
+7. **Password reset:** users click "Forgot password?" on the sign-in form; Supabase sends a reset email. After clicking the link they are returned to `/login` with a prompt to sign in using their new password.
+8. Assign teams in SQL (until an admin UI exists), for example:  
    `update public.profiles set team_id = '22222222-2222-2222-2222-222222222221' where id = '<user-uuid>';`  
    Use team UUIDs from the optional seed migration or your own `teams` rows.
 

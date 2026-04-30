@@ -18,17 +18,15 @@ export default function LoginPage() {
           >
             Step Up
           </Link>
-          <p className="truncate text-xs text-muted-foreground">Sign in</p>
+          <p className="truncate text-xs text-muted-foreground">Account</p>
         </div>
         <ModeToggle />
       </header>
 
       <main className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-6 px-4 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-        <section className="rounded-xl border border-border bg-card p-4 text-card-foreground shadow-sm">
-          <h1 className="text-base font-semibold">Sign in with email</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            We&apos;ll send you a one-time link. No password to remember.
-          </p>
+        <section className="rounded-xl border border-border bg-card p-5 text-card-foreground shadow-sm">
+          <h1 className="text-base font-semibold">Sign in to Step Up</h1>
+
           {!configured ? (
             <p className="mt-3 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm text-amber-950 dark:text-amber-100">
               Add <code className="font-mono text-xs">NEXT_PUBLIC_SUPABASE_*</code>{" "}
@@ -36,6 +34,7 @@ export default function LoginPage() {
               the dev server.
             </p>
           ) : null}
+
           <div className="mt-4">
             <Suspense fallback={<p className="text-sm text-muted-foreground">Loading…</p>}>
               <LoginForm />

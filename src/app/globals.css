@@ -282,57 +282,9 @@
     animation-direction: reverse;
   }
 
-  .landing-marquee {
-    overflow: hidden;
-  }
-
-  .landing-marquee-track {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    min-width: max-content;
-    animation: marquee-slide 20s linear infinite;
-  }
-
-  .landing-marquee-track span {
-    position: relative;
-  }
-
-  .landing-marquee-track span::after {
-    content: "";
-    position: absolute;
-    right: -1.35rem;
-    top: 50%;
-    width: 0.25rem;
-    height: 0.25rem;
-    margin-top: -0.125rem;
-    border-radius: 9999px;
-    background: color-mix(in oklab, var(--primary) 70%, transparent);
-  }
-
-  .media-frame {
-    animation: media-in 620ms ease both;
-  }
-
-  .landing-media {
-    transform: scale(1.01);
-    transition:
-      transform 320ms ease,
-      filter 320ms ease;
-    filter: saturate(1.05) contrast(1.02);
-  }
-
-  .media-frame:hover .landing-media {
-    transform: scale(1.04);
-    filter: saturate(1.14) contrast(1.05);
-  }
-
   @media (max-width: 767px) {
     .card-kick:hover {
       transform: translateY(-1px);
-    }
-    .landing-media {
-      transform: scale(1);
     }
   }
 
@@ -366,34 +318,12 @@
     }
   }
 
-  @keyframes marquee-slide {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-
-  @keyframes media-in {
-    from {
-      opacity: 0;
-      transform: translate3d(0, 10px, 0) scale(0.995);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .landing-lane,
   .landing-pulse,
   .landing-orbit,
-  .landing-marquee-track,
-  .media-frame,
-  .landing-media,
   .card-kick {
     animation: none !important;
     transition: none !important;

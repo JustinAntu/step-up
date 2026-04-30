@@ -20,6 +20,9 @@ function forwardSetCookies(from: NextResponse, to: NextResponse) {
   }
 }
 
+/** Routes that require an authenticated session. */
+const PROTECTED_PREFIXES = ["/dashboard", "/onboarding", "/teams"];
+
 export async function updateSession(request: NextRequest) {
   const url = getSupabaseUrl();
   const key = getSupabasePublishableOrAnonKey();
@@ -57,12 +60,17 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
-  if (pathname.startsWith("/dashboard") && !user) {
+  // Redirect unauthenticated users away from protected routes
+  const isProtected = PROTECTED_PREFIXES.some((prefix) =>
+    pathname.startsWith(prefix),
+  );
+  if (isProtected && !user) {
     const redirect = NextResponse.redirect(new URL("/login", request.url));
     forwardSetCookies(supabaseResponse, redirect);
     return redirect;
   }
 
+  // Redirect authenticated users away from /login to dashboard
   if (pathname === "/login" && user) {
     const redirect = NextResponse.redirect(new URL("/dashboard", request.url));
     forwardSetCookies(supabaseResponse, redirect);
