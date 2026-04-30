@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
-export function LoginForm() {
+export function LoginForm({ compact = false }: { compact?: boolean }) {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
   const [email, setEmail] = useState("");
@@ -50,7 +50,7 @@ export function LoginForm() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className={compact ? "flex flex-col gap-3" : "flex flex-col gap-4"}>
       {error === "auth" ? (
         <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           Sign-in failed. Request a new link below.
@@ -62,7 +62,10 @@ export function LoginForm() {
           restart.
         </p>
       ) : null}
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+      <form
+        className={compact ? "flex flex-col gap-2.5" : "flex flex-col gap-3"}
+        onSubmit={handleSubmit}
+      >
         <div className="flex flex-col gap-2">
           <label className="text-sm font-medium" htmlFor="email">
             Work email
@@ -76,14 +79,22 @@ export function LoginForm() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="h-12 min-h-11 w-full rounded-lg border border-input bg-background px-4 text-base outline-none ring-ring/50 focus-visible:border-ring focus-visible:ring-[3px]"
+            className={
+              compact
+                ? "h-11 min-h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none ring-ring/50 focus-visible:border-ring focus-visible:ring-[3px]"
+                : "h-12 min-h-11 w-full rounded-lg border border-input bg-background px-4 text-base outline-none ring-ring/50 focus-visible:border-ring focus-visible:ring-[3px]"
+            }
             placeholder="you@company.com"
           />
         </div>
         <Button
           type="submit"
           size="lg"
-          className="h-12 min-h-11 w-full touch-manipulation text-base"
+          className={
+            compact
+              ? "h-11 min-h-11 w-full touch-manipulation text-sm"
+              : "h-12 min-h-11 w-full touch-manipulation text-base"
+          }
           disabled={status === "sending"}
         >
           {status === "sending" ? "Sending link…" : "Email me a magic link"}
